@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SAUTI · Narrative Agency · Paris</title>
-<meta name="description" content="SAUTI transforme des dirigeants africains en figures d'autorité médiatique. Griot × Netflix, depuis Paris.">
+<title>SAUTI · Cabinet de conseil · Rebranding, Communication & Acquisition · Paris</title>
+<meta name="description" content="Cabinet de conseil en communication de rebranding et acquisition. Six mois d'accompagnement, un seul format. Du sport au conseil, pour ceux qui vendent déjà.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
@@ -13,10 +13,10 @@
 :root{
   --noir:#0A0A0A;
   --noir2:#111111;
-  --or:#C9A15A;              /* or/bronze : accent RARE désormais */
+  --or:#C9A15A;              /* or/bronze : accent RARE */
   --or2:#B8935A;
-  --bordeaux:#5C1A1A;        /* rouge sombre : accent PRINCIPAL (fonds, voiles, bordures) */
-  --bordeaux-ink:#C4636E;    /* dérivée lisible du rouge pour les textes sur fond sombre */
+  --bordeaux:#5C1A1A;        /* rouge sombre : accent PRINCIPAL */
+  --bordeaux-ink:#C4636E;    /* dérivée lisible du rouge pour les textes */
   --creme:#F5F1EA;
   --creme60:rgba(245,241,234,.62);
   --creme40:rgba(245,241,234,.42);
@@ -65,10 +65,10 @@ body::after{
 .eyebrow::before{content:"";width:34px;height:1px;background:var(--bordeaux-ink);opacity:.7}
 h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.04;letter-spacing:-.015em}
 h1 em,h2 em,.quote em{font-style:italic;color:var(--bordeaux-ink);font-weight:400}
+h2 em.gold,h1 em.gold{color:var(--or)}
 .section-head{position:relative;z-index:1}
 .section-head h2{font-size:clamp(2.3rem,5.2vw,4.3rem);margin:22px 0 0}
 .section-head p.lead{max-width:620px;color:var(--creme60);font-size:1.06rem;margin-top:22px}
-.section-head p.lead + p.lead{margin-top:14px}
 .watermark{
   position:absolute;z-index:0;font-family:var(--serif);font-weight:600;line-height:1;
   font-size:clamp(7rem,16vw,14rem);color:transparent;
@@ -99,7 +99,6 @@ h1 em,h2 em,.quote em{font-style:italic;color:var(--bordeaux-ink);font-weight:40
 }
 .btn svg{transition:transform .35s var(--ease)}
 .btn:hover svg{transform:translateX(5px)}
-/* CTA principal : rouge profond + texte crème (lisible) */
 .btn-gold{
   background:linear-gradient(135deg,#5C1A1A 0%,#7E2424 100%);color:var(--creme);
   box-shadow:inset 0 0 0 1px rgba(196,99,110,.4);
@@ -107,12 +106,6 @@ h1 em,h2 em,.quote em{font-style:italic;color:var(--bordeaux-ink);font-weight:40
 .btn-gold:hover{filter:brightness(1.25);transform:translateY(-2px)}
 .btn-ghost{border:1px solid rgba(245,241,234,.28);color:var(--creme);background:rgba(255,255,255,.04);backdrop-filter:blur(10px)}
 .btn-ghost:hover{border-color:var(--bordeaux-ink);color:var(--bordeaux-ink);transform:translateY(-2px)}
-
-/* Photo duotone : lavage rouge sombre */
-.duo{position:relative;overflow:hidden;border-radius:20px;background:var(--noir2)}
-.duo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08) brightness(.78)}
-.duo::after{content:"";position:absolute;inset:0;background:#8E2A2A;mix-blend-mode:soft-light;opacity:.5;pointer-events:none}
-.duo::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.78),transparent 48%);z-index:1;pointer-events:none}
 
 /* ============ Navigation flottante ============ */
 .nav{
@@ -149,7 +142,7 @@ h1 em,h2 em,.quote em{font-style:italic;color:var(--bordeaux-ink);font-weight:40
   opacity:0;pointer-events:none;transition:opacity .4s var(--ease);
 }
 .mnav.open{opacity:1;pointer-events:auto}
-.mnav a{font-family:var(--serif);font-size:clamp(2rem,8vw,3rem);padding:10px 0;border-bottom:1px solid var(--line);transition:color .3s,padding-left .3s}
+.mnav a{font-family:var(--serif);font-size:clamp(1.9rem,7.5vw,2.8rem);padding:10px 0;border-bottom:1px solid var(--line);transition:color .3s,padding-left .3s}
 .mnav a:hover{color:var(--bordeaux-ink);padding-left:12px}
 .mnav .tech{color:var(--bordeaux-ink);margin-bottom:18px}
 
@@ -157,11 +150,9 @@ h1 em,h2 em,.quote em{font-style:italic;color:var(--bordeaux-ink);font-weight:40
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:var(--noir)}
 .hero-video-wrap{position:absolute;inset:0;will-change:transform}
 .hero-video-wrap video,.hero-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-/* La vidéo est assombrie à la source */
 .hero-video-wrap video{filter:brightness(.68) saturate(.92) contrast(1.06)}
 .hero-fallback{display:none;filter:grayscale(1) contrast(1.1) brightness(.45)}
 .hero.no-video .hero-fallback{display:block}
-/* Triple calque de lisibilité : bordeaux cinéma en diagonale + noir haut et bas */
 .hero-scrim{
   position:absolute;inset:0;z-index:1;
   background:
@@ -185,7 +176,8 @@ h1 em,h2 em,.quote em{font-style:italic;color:var(--bordeaux-ink);font-weight:40
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   color:var(--creme);font-size:1.04rem;
 }
-.hero-ctas{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap}
+.hero-ctas{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap;align-items:center}
+.hero-note{font-family:var(--tech);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--creme40)}
 
 /* Viseur caméra */
 .viewfinder{position:absolute;inset:26px;z-index:2;pointer-events:none}
@@ -202,10 +194,6 @@ h1 em,h2 em,.quote em{font-style:italic;color:var(--bordeaux-ink);font-weight:40
 /* Cartes statistiques flottantes */
 .stat-stack{position:absolute;z-index:3;right:4vw;bottom:150px;width:280px}
 .stat-card{padding:24px 26px;border-radius:20px}
-.stat-avatars{display:flex;margin-bottom:16px}
-.stat-avatars img{width:34px;height:34px;border-radius:50%;border:2px solid var(--noir);object-fit:cover}
-.stat-avatars img + img{margin-left:-11px}
-.stat-avatars span:last-child{width:34px;height:34px;border-radius:50%;margin-left:-11px;background:var(--bordeaux-ink);color:var(--noir);display:grid;place-items:center;font-size:.6rem;font-weight:700;border:2px solid var(--noir)}
 .stat-num{font-family:var(--serif);font-size:3rem;line-height:1;color:var(--bordeaux-ink)}
 .stat-num small{font-size:1.25rem;font-family:var(--sans);font-weight:500;color:var(--creme)}
 .stat-card p{font-size:.85rem;color:var(--creme60);margin-top:8px}
@@ -230,108 +218,109 @@ h1 em,h2 em,.quote em{font-style:italic;color:var(--bordeaux-ink);font-weight:40
 .section{position:relative;padding:clamp(80px,9vw,128px) 0}
 .section + .section{border-top:1px solid var(--line)}
 
-/* 01 Constat */
-.constat .watermark{top:36px;right:2vw}
-.constat-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start;margin-top:60px;position:relative;z-index:1}
-.constat-card{padding:34px 32px}
-.constat-card:nth-child(1){grid-column:1/5}
-.constat-card:nth-child(2){grid-column:5/9;margin-top:72px}
-.constat-card:nth-child(3){grid-column:9/13;margin-top:144px}
-.constat-idx{font-family:var(--serif);font-style:italic;color:var(--bordeaux-ink);font-size:1.15rem}
-.constat-card h3{font-size:1.45rem;margin:14px 0 12px}
-.constat-card p{color:var(--creme60);font-size:.95rem}
-
-/* 02 Méthode */
-.methode .watermark{top:30px;left:2vw}
-.methode-title{display:flex;align-items:baseline;gap:.18em;font-size:clamp(3rem,8vw,6.6rem);margin-top:22px}
-.methode-title .x{color:var(--bordeaux-ink);font-style:italic;font-weight:400;font-size:.7em}
-.split{display:grid;grid-template-columns:repeat(12,1fr);align-items:start;margin-top:56px;position:relative}
-.panel{position:relative;border-radius:26px;overflow:visible;transition:transform .6s var(--ease)}
-.panel .duo,.panel .duo img{position:absolute;inset:0;height:100%;border-radius:26px}
-.panel-inner{
-  position:relative;z-index:2;height:100%;display:flex;flex-direction:column;
-  padding:42px;min-height:460px;
-  background:rgba(10,10,10,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  border:1px solid var(--stroke);border-radius:26px;
-  box-shadow:0 30px 60px rgba(0,0,0,.5);
+/* ============ LE COULOIR : quatre portes qui s'ouvrent ============ */
+.couloir .watermark{top:36px;right:2vw}
+.doors{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:64px;
+  perspective:1500px;perspective-origin:50% 30%;position:relative;z-index:1;
 }
-.panel-griot{grid-column:1/8;grid-row:1;z-index:1}
-.panel-griot .panel-inner{padding-bottom:118px}
-.panel-netflix{grid-column:6/13;grid-row:2;margin:-72px 0 0 5%;z-index:2}
-.panel-netflix .panel-inner{background:rgba(20,8,8,.6)}
-.panel:hover{transform:translateY(-8px)}
-.panel-tag{display:flex;align-items:center;gap:10px;margin-bottom:auto;font-family:var(--tech);font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--bordeaux-ink)}
-.panel-tag i{width:7px;height:7px;background:var(--bordeaux-ink);transform:rotate(45deg)}
-.panel-big{font-family:var(--serif);font-size:clamp(2rem,4.4vw,3.4rem);font-weight:500;margin-top:90px}
-.panel-big em{font-style:italic;color:var(--bordeaux-ink);font-weight:400}
-.panel-sub{font-family:var(--serif);font-style:italic;color:var(--creme60);font-size:1.12rem;margin:8px 0 16px}
-.panel-inner > p:last-child{color:rgba(245,241,234,.85);max-width:52ch;font-size:.97rem}
-/* Le disque × : joyau dorée au point exact du recouvrement */
-.split-x{
-  position:absolute;top:-37px;left:-37px;z-index:3;width:74px;height:74px;border-radius:50%;
-  display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:1.7rem;color:var(--noir);
-  background:linear-gradient(135deg,var(--or),var(--or2));border:1px solid rgba(196,99,110,.5);
-  backdrop-filter:blur(10px);box-shadow:0 20px 50px rgba(0,0,0,.6);
+.door{
+  position:relative;height:440px;border:0;background:none;padding:0;text-align:left;
+  cursor:pointer;transform-style:preserve-3d;color:inherit;display:block;
 }
-.method-quote{max-width:920px;margin:84px auto 0;text-align:center;position:relative;z-index:1;padding:52px 46px}
-.method-quote blockquote{
-  font-family:var(--serif);font-style:italic;font-weight:400;
-  font-size:clamp(1.45rem,3.2vw,2.5rem);line-height:1.35;
+/* Ce qui se trouve derrière la porte : lumière dorée + invitation */
+.door-behind{
+  position:absolute;inset:0;border-radius:12px 12px 0 0;
+  background:radial-gradient(130% 105% at 85% 45%, rgba(201,161,90,.34), rgba(92,26,26,.22) 55%, rgba(10,10,10,.92));
+  display:flex;align-items:flex-end;padding:26px;
+  opacity:0;transition:opacity .8s var(--ease);
 }
-.method-quote em{font-style:italic;color:var(--or);font-weight:400}
-.method-quote .qm{font-family:var(--serif);color:var(--or);font-size:4.2rem;line-height:0;display:block;margin-bottom:32px}
-.method-quote cite{display:block;margin-top:26px;font-style:normal;font-family:var(--tech);font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--bordeaux-ink)}
-
-/* 03 Saison */
-.saison .watermark{top:36px;right:2vw}
-.saison-stats{display:flex;margin-top:48px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;z-index:1}
-.sstat{flex:1;padding:26px 8px;display:flex;align-items:baseline;gap:12px}
-.sstat + .sstat{border-left:1px solid var(--line);padding-left:32px}
-.sstat b{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,4vw,2.9rem);color:var(--bordeaux-ink);line-height:1}
-.sstat span{font-family:var(--tech);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--creme40)}
-/* Étapes : décalage par margin-top (dans le flux, zéro débordement) */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start;margin-top:64px;position:relative;z-index:1}
-.step{padding:36px 30px}
-.step:nth-child(2){margin-top:56px}
-.step:nth-child(3){margin-top:112px}
-.step-num{font-family:var(--serif);font-weight:600;font-size:4.2rem;line-height:1;color:transparent;-webkit-text-stroke:1px var(--bordeaux-ink);transition:color .4s}
-.step:hover .step-num{color:var(--bordeaux-ink)}
-.step h3{font-size:1.5rem;margin:20px 0 4px}
-.step .tagline{font-family:var(--serif);font-style:italic;color:var(--bordeaux-ink);font-size:1rem;margin-bottom:12px}
-.step p{color:var(--creme60);font-size:.94rem}
-.receive{margin-top:56px;overflow:hidden;position:relative;z-index:1}
-.receive-head{padding:30px 40px 22px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.receive-head h3{font-size:clamp(1.5rem,3vw,2.1rem)}
-.receive-row{
-  display:grid;grid-template-columns:80px 1fr 40px;gap:24px;align-items:center;
-  padding:26px 40px;border-bottom:1px solid var(--line);transition:background .4s var(--ease),padding-left .4s var(--ease);
+.door-behind::after{
+  content:"";position:absolute;left:14px;right:14px;bottom:0;height:4px;
+  background:linear-gradient(90deg,transparent,rgba(201,161,90,.7),transparent);
+  filter:blur(1px);
 }
-.receive-row:last-child{border-bottom:0}
-.receive-row:hover{background:rgba(255,255,255,.04);padding-left:52px}
-.receive-row .n{font-family:var(--serif);font-style:italic;color:var(--bordeaux-ink);font-size:1.3rem}
-.receive-row h4{font-family:var(--serif);font-weight:500;font-size:1.25rem;margin-bottom:6px}
-.receive-row p{color:var(--creme60);font-size:.92rem;max-width:64ch}
-.receive-row svg{opacity:0;transform:translateX(-8px);transition:.4s var(--ease);color:var(--bordeaux-ink)}
-.receive-row:hover svg{opacity:1;transform:none}
+.door-cta{display:inline-flex;align-items:center;gap:10px;font-family:var(--tech);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--or)}
+/* Le battant */
+.door-panel{
+  position:absolute;inset:0;border-radius:12px 12px 0 0;
+  transform-origin:left center;transition:transform .9s var(--ease),box-shadow .9s var(--ease);
+  background:linear-gradient(160deg,#181512,#0E0C0A 70%);
+  border:1px solid rgba(245,241,234,.13);
+  box-shadow:0 30px 60px rgba(0,0,0,.55);
+  display:flex;flex-direction:column;padding:26px;overflow:hidden;
+}
+/* Moulures de porte */
+.door-panel::before{content:"";position:absolute;inset:52px 26px 96px;border:1px solid rgba(245,241,234,.08);border-radius:8px}
+.door-panel::after{content:"";position:absolute;left:26px;right:26px;top:54%;height:1px;background:rgba(245,241,234,.08)}
+.door.ajar .door-panel{transform:rotateY(-14deg)}
+.door.ajar .door-behind{opacity:.55}
+.door.open .door-panel,.door:hover .door-panel,.door:focus-visible .door-panel{
+  transform:rotateY(-62deg);box-shadow:44px 34px 90px rgba(0,0,0,.72);
+}
+.door.open .door-behind,.door:hover .door-behind,.door:focus-visible .door-behind{opacity:1}
+.door-plate{
+  align-self:flex-start;font-family:var(--tech);font-size:.62rem;letter-spacing:.3em;
+  color:rgba(245,241,234,.55);border:1px solid rgba(245,241,234,.18);
+  padding:6px 10px;border-radius:4px;
+}
+.door-name{font-family:var(--serif);font-size:clamp(1.4rem,1.8vw,1.8rem);font-weight:500;margin-top:auto;line-height:1.1}
+.door-sub{font-family:var(--tech);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--bordeaux-ink);margin-top:8px}
+.door-handle{
+  position:absolute;right:20px;top:50%;width:9px;height:9px;border-radius:50%;
+  background:var(--or);box-shadow:0 0 12px rgba(201,161,90,.55);
+}
+.door-handle::before{content:"";position:absolute;right:13px;top:3px;width:16px;height:1.5px;background:rgba(245,241,234,.25)}
 
-/* Ce que vous devenez */
-.become{margin-top:84px;position:relative;z-index:1}
-.become-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start;margin-top:44px}
-.bcard{padding:40px 32px}
-.bcard:nth-child(2){margin-top:48px}
-.bcard:nth-child(3){margin-top:96px}
-.bword{font-family:var(--serif);font-size:clamp(1.9rem,3.4vw,2.7rem);font-weight:500;transition:color .4s}
-.bcard:hover .bword{color:var(--or)}
-.bcard p{margin-top:16px;color:var(--creme60);font-size:.94rem}
-.bcard::after{content:"";display:block;width:38px;height:1px;background:var(--bordeaux-ink);margin-top:24px;transition:width .5s var(--ease)}
-.bcard:hover::after{width:80px}
+/* ============ 01 LE CABINET ============ */
+.cabinet .watermark{top:36px;right:2vw}
+.cabinet-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start;margin-top:60px;position:relative;z-index:1}
+.pilier{padding:34px 32px}
+.pilier:nth-child(1){grid-column:1/5}
+.pilier:nth-child(2){grid-column:5/9;margin-top:72px}
+.pilier:nth-child(3){grid-column:9/13;margin-top:144px}
+.pilier-idx{font-family:var(--serif);font-style:italic;color:var(--bordeaux-ink);font-size:1.15rem}
+.pilier h3{font-size:1.45rem;margin:14px 0 12px}
+.pilier p{color:var(--creme60);font-size:.95rem}
+.format-band{
+  display:grid;grid-template-columns:auto 1fr;gap:52px;align-items:center;
+  margin-top:64px;padding:42px 46px;position:relative;z-index:1;
+}
+.std-nums{display:flex;gap:40px;flex-wrap:wrap}
+.std-nums div b{font-family:var(--serif);font-size:2.6rem;font-weight:500;color:var(--bordeaux-ink);display:block;line-height:1.1}
+.std-nums div b.gold{color:var(--or)}
+.std-nums div span{font-family:var(--tech);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--creme40)}
+.format-band > p{color:var(--creme60);font-size:.98rem;max-width:62ch}
+.format-band > p strong{color:var(--creme);font-weight:600}
 
-/* 04 Showrunner */
-.showrunner .watermark{top:36px;left:2vw}
+/* ============ 02 POUR QUI ============ */
+.cible .watermark{top:36px;left:2vw}
+.cible-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start;margin-top:56px;position:relative;z-index:1}
+.cible-card{padding:36px 34px}
+.cible-card:nth-child(1){grid-column:1/6}
+.cible-card:nth-child(2){grid-column:6/13;margin-top:64px;background:rgba(92,26,26,.22);border-color:rgba(196,99,110,.35)}
+.cible-card:nth-child(3){grid-column:2/9;margin-top:24px}
+.cible-card h3{font-size:1.5rem;margin-bottom:14px}
+.cible-card p{color:var(--creme60);font-size:.96rem}
+.ideal-big{font-size:clamp(1.9rem,3.2vw,2.5rem)!important;margin-bottom:16px!important}
+.ideal-big em{font-style:italic;color:var(--or);font-weight:400}
+.pin{display:inline-flex;align-items:center;gap:10px;font-family:var(--tech);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--bordeaux-ink);margin-bottom:16px}
+.pin.gold{color:var(--or)}
+.checklist{list-style:none}
+.checklist li{position:relative;padding:10px 0 10px 26px;color:var(--creme60);font-size:.96rem;border-bottom:1px solid var(--line)}
+.checklist li:last-child{border-bottom:0}
+.checklist li::before{content:"";position:absolute;left:0;top:19px;width:8px;height:8px;background:var(--bordeaux-ink);transform:rotate(45deg)}
+
+/* ============ 03 POURQUOI NOUS ============ */
+.pourquoi .watermark{top:36px;left:2vw}
 .show-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:auto auto;column-gap:24px;row-gap:28px;align-items:start;margin-top:60px}
 .show-photo{grid-column:8/13;grid-row:1/span 2;position:relative;min-height:560px}
 .show-photo .duo{position:absolute;inset:0;border-radius:20px}
 .show-photo .duo img{height:100%}
+.duo{position:relative;overflow:hidden;border-radius:20px;background:var(--noir2)}
+.duo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08) brightness(.78)}
+.duo::after{content:"";position:absolute;inset:0;background:#8E2A2A;mix-blend-mode:soft-light;opacity:.5;pointer-events:none}
+.duo::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.78),transparent 48%);z-index:1;pointer-events:none}
 .photo-frame{position:absolute;inset:18px;z-index:2;pointer-events:none}
 .photo-frame i{position:absolute;width:22px;height:22px;border:1px solid rgba(196,99,110,.65)}
 .photo-frame i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0}
@@ -348,8 +337,6 @@ h1 em,h2 em,.quote em{font-style:italic;color:var(--bordeaux-ink);font-weight:40
 .show-bio p strong{color:var(--creme);font-weight:600}
 .show-quote{grid-column:3/9;grid-row:2;z-index:2;padding:30px 34px;border-left:2px solid var(--or)}
 .show-quote p{font-family:var(--serif);font-style:italic;font-size:1.2rem;line-height:1.5}
-
-/* Timeline parcours */
 .timeline{margin-top:72px;position:relative;z-index:1;padding-left:26px;border-left:1px solid rgba(196,99,110,.32)}
 .tl-item{position:relative;padding:28px 34px;max-width:600px;margin-bottom:24px}
 .tl-item:nth-child(2){margin-left:48px}
@@ -363,47 +350,32 @@ h1 em,h2 em,.quote em{font-style:italic;color:var(--bordeaux-ink);font-weight:40
 .tl-item h4{font-family:var(--serif);font-weight:500;font-size:1.4rem;margin:8px 0 10px}
 .tl-item p{color:var(--creme60);font-size:.93rem}
 
-/* Ancrage */
-.ancrage-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start;margin-top:56px;position:relative;z-index:1}
-.ancrage-card{padding:38px 36px}
-.ancrage-card:first-child{grid-column:1/6}
-.ancrage-card:last-child{grid-column:6/13;margin-top:64px}
-.ancrage-card h3{font-size:1.5rem;margin-bottom:18px}
-.addr{font-family:var(--serif);font-size:clamp(1.2rem,2.2vw,1.55rem);line-height:1.5;font-weight:400}
-.ancrage-card .mail-link{
-  display:inline-flex;align-items:center;gap:12px;margin-top:22px;
-  font-family:var(--tech);font-size:.85rem;letter-spacing:.08em;color:var(--bordeaux-ink);
-  border-bottom:1px solid rgba(196,99,110,.4);padding-bottom:6px;transition:border-color .3s,gap .3s var(--ease);
-}
-.ancrage-card .mail-link:hover{border-color:var(--bordeaux-ink);gap:18px}
-.pin{display:inline-flex;align-items:center;gap:10px;font-family:var(--tech);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--bordeaux-ink);margin-bottom:16px}
-.std-nums{display:flex;gap:40px;margin-top:24px;flex-wrap:wrap}
-.std-nums div b{font-family:var(--serif);font-size:2.3rem;font-weight:500;color:var(--bordeaux-ink);display:block;line-height:1.1}
-.std-nums div b.gold{color:var(--or)}
-.std-nums div span{font-family:var(--tech);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--creme40)}
-
-/* CTA final */
-.final{padding:clamp(100px,11vw,160px) 0;text-align:center;position:relative;overflow:hidden}
-.final .watermark{top:16px;left:50%;transform:translateX(-50%);-webkit-text-stroke-color:rgba(201,161,90,.32)}
+/* ============ 04 NOUS JOINDRE ============ */
+.contact .watermark{top:36px;left:2vw}
+.contact .method-quote{margin:60px auto 0}
+.method-quote{max-width:920px;text-align:center;position:relative;z-index:1;padding:52px 46px}
+.method-quote blockquote{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.45rem,3.2vw,2.5rem);line-height:1.35}
+.method-quote em{font-style:italic;color:var(--or);font-weight:400}
+.method-quote .qm{font-family:var(--serif);color:var(--or);font-size:4.2rem;line-height:0;display:block;margin-bottom:32px}
+.contact-grid{display:grid;grid-template-columns:7fr 5fr;gap:24px;align-items:stretch;margin-top:44px;position:relative;z-index:1}
+.contact-main{padding:44px 46px;display:flex;flex-direction:column;align-items:flex-start}
+.contact-main h3{font-size:clamp(1.9rem,3.4vw,2.7rem);margin:24px 0 14px}
+.contact-main p{color:var(--creme60);max-width:54ch}
+.contact-main .btn{margin-top:28px}
+.contact-alt{margin-top:24px;font-family:var(--tech);font-size:.82rem;letter-spacing:.04em;color:var(--creme40)}
+.contact-alt a{color:var(--bordeaux-ink);border-bottom:1px solid rgba(196,99,110,.4);padding-bottom:4px;transition:border-color .3s,color .3s}
+.contact-alt a:hover{color:var(--or);border-color:rgba(201,161,90,.5)}
+.contact-addr{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);font-size:.85rem;color:var(--creme40)}
 .final-badge{
   display:inline-flex;align-items:center;gap:12px;padding:11px 24px;border-radius:999px;
   background:rgba(255,255,255,.05);border:1px solid var(--stroke);backdrop-filter:blur(12px);
-  font-family:var(--tech);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--creme60);
+  font-family:var(--tech);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--creme60);
 }
 .final-badge i{width:7px;height:7px;background:var(--or);border-radius:50%;animation:blink 1.8s infinite}
-.final h2{font-size:clamp(2.7rem,6.6vw,5.6rem);margin:32px auto 0;max-width:14ch}
-.final .sub{max-width:520px;margin:26px auto 0;color:var(--creme60);font-size:1.05rem}
-.final-quote{
-  font-family:var(--serif);font-style:italic;font-weight:400;
-  font-size:clamp(1.4rem,3.2vw,2.3rem);line-height:1.4;
-  max-width:820px;margin:72px auto 0;padding:42px 40px;
-  color:var(--creme);position:relative;z-index:1;
-  border-top:2px solid var(--or);
-}
-.final-quote em{font-style:italic;color:var(--or);font-weight:400}
-.final-ctas{margin-top:46px;position:relative;z-index:1}
-.final-note{margin-top:18px;font-family:var(--tech);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--creme40)}
-.final-mail{display:inline-block;margin-top:40px;font-family:var(--tech);font-size:.85rem;letter-spacing:.08em;color:var(--bordeaux-ink);border-bottom:1px solid rgba(196,99,110,.4);padding-bottom:5px;transition:border-color .3s}
+.contact-qr{padding:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:20px}
+.contact-qr img{width:200px;height:200px;border-radius:12px;border:1px solid var(--stroke);background:var(--noir2)}
+.contact-qr p{font-size:.85rem;color:var(--creme40);max-width:30ch}
+.contact-qr .pin{margin-bottom:0}
 
 /* Footer */
 footer{border-top:1px solid var(--line);padding:52px 0 40px;background:var(--noir2)}
@@ -425,38 +397,29 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px;background:var(--noi
   .show-photo{grid-column:1/-1;grid-row:2;min-height:440px;max-width:560px}
   .show-quote{grid-column:1/-1;grid-row:3}
   .photo-label{display:none}
+  .doors{grid-template-columns:repeat(2,1fr)}
+  .door{height:340px}
 }
 @media (max-width:960px){
   .nav-links,.nav-cta{display:none}
   .burger{display:block}
 }
 @media (max-width:900px){
-  .constat-card:nth-child(n){grid-column:1/-1;margin-top:0}
-  .panel-griot,.panel-netflix{grid-column:1/-1;grid-row:auto;margin:0}
-  .panel-griot .panel-inner{padding-bottom:96px}
-  .panel-netflix{margin-top:-56px}
-  .panel-inner{min-height:420px;padding:34px 28px}
-  .panel-big{margin-top:70px}
-  .split-x{width:60px;height:60px;top:-30px;left:-22px;font-size:1.4rem}
-  .steps{grid-template-columns:1fr}
-  .step:nth-child(n){margin-top:0}
-  .become-grid{grid-template-columns:1fr}
-  .bcard:nth-child(n){margin-top:0}
-  .timeline .tl-item:nth-child(n){margin-left:0}
-  .ancrage-card:first-child,.ancrage-card:last-child{grid-column:1/-1;margin-top:0}
+  .pilier:nth-child(n){grid-column:1/-1;margin-top:0}
+  .cible-card:nth-child(n){grid-column:1/-1;margin-top:0}
+  .format-band{grid-template-columns:1fr;gap:30px;padding:36px 32px}
+  .contact-grid{grid-template-columns:1fr}
   .hero-content{padding:130px 0 140px}
   .viewfinder{inset:14px}
   .vf-rec{right:24px}
   .vf-meta{display:none}
   .method-quote{padding:40px 28px}
+  .contact-main{padding:34px 28px}
 }
 @media (max-width:560px){
   .wrap{width:calc(100% - 36px)}
-  .saison-stats{flex-direction:column}
-  .sstat + .sstat{border-left:0;border-top:1px solid var(--line);padding-left:0}
-  .receive-row{grid-template-columns:1fr;gap:8px;padding:24px 26px}
-  .receive-row svg{display:none}
-  .receive-head,.receive-row{padding-left:26px;padding-right:26px}
+  .doors{grid-template-columns:1fr;gap:20px;perspective:1000px}
+  .door{height:280px}
   .show-bio{padding:32px 26px}
   .hero-sub{padding:20px 22px}
   .stat-stack{flex-direction:column}
@@ -466,6 +429,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px;background:var(--noi
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
   html{scroll-behavior:auto}
   .rv{opacity:1;transform:none}
+  .door-panel{transform:rotateY(-14deg)!important}
 }
 </style>
 </head>
@@ -478,23 +442,24 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px;background:var(--noi
     <span class="brand-word hidden">SAUTI<b>.</b></span>
   </a>
   <nav class="nav-links" aria-label="Navigation principale">
-    <a href="#constat">Le Constat</a>
-    <a href="#methode">La Méthode</a>
-    <a href="#offre">L'Offre</a>
-    <a href="#showrunner">Le Showrunner</a>
+    <a href="#couloir">Le Couloir</a>
+    <a href="#cabinet">Le Cabinet</a>
+    <a href="#cible">Pour Qui</a>
+    <a href="#pourquoi">Pourquoi Nous</a>
   </nav>
-  <a class="nav-cta" href="https://calendly.com/agencysauti/candidature" target="_blank" rel="noopener">Candidature</a>
+  <a class="nav-cta" href="https://calendly.com/agencysauti/candidature" target="_blank" rel="noopener">Pousser la porte</a>
   <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
 </header>
 
 <!-- Menu mobile -->
 <nav class="mnav" id="mnav" aria-label="Menu mobile">
   <span class="tech">SAUTI · Paris</span>
-  <a href="#constat">Le Constat</a>
-  <a href="#methode">La Méthode</a>
-  <a href="#offre">L'Offre</a>
-  <a href="#showrunner">Le Showrunner</a>
-  <a href="https://calendly.com/agencysauti/candidature" target="_blank" rel="noopener" style="color:var(--bordeaux-ink)">Candidature</a>
+  <a href="#couloir">Le Couloir</a>
+  <a href="#cabinet">Le Cabinet</a>
+  <a href="#cible">Pour Qui</a>
+  <a href="#pourquoi">Pourquoi Nous</a>
+  <a href="#contact">Nous Joindre</a>
+  <a href="https://calendly.com/agencysauti/candidature" target="_blank" rel="noopener" style="color:var(--bordeaux-ink)">Pousser la porte</a>
 </nav>
 
 <main>
@@ -515,34 +480,29 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px;background:var(--noi
     </div>
 
     <div class="wrap hero-content" id="heroContent">
-      <span class="hero-badge"><i></i>Paris · 78 Av. des Champs-Élysées · Narrative Agency</span>
-      <h1>Si vous devez <em>convaincre</em>, c'est que vous avez déjà <em class="gold">perdu</em>.</h1>
+      <span class="hero-badge"><i></i>Cabinet de conseil · Rebranding · Acquisition · Paris</span>
+      <h1>Un couloir. <em class="gold">Quatre portes.</em> Une <em>décision</em>.</h1>
       <div class="hero-sub">
-        <p>Il existe des dirigeants que l'on cherche. Des noms que l'on prononce avant même de négocier. Nous construisons cette autorité, depuis Paris.</p>
+        <p>Six mois d'accompagnement pour transformer votre expertise en image, et votre image en clients. Vous vendez déjà. Nous construisons ce qui fait vendre.</p>
       </div>
       <div class="hero-ctas">
         <a class="btn btn-gold" href="https://calendly.com/agencysauti/candidature" target="_blank" rel="noopener">
-          Soumettre une candidature
+          Franchir le seuil
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a class="btn btn-ghost" href="#methode">Découvrir la méthode</a>
+        <a class="btn btn-ghost" href="#couloir">Explorer le couloir</a>
+        <span class="hero-note">30 minutes · Rien à préparer</span>
       </div>
 
       <!-- Cartes statistiques -->
       <div class="stat-stack">
         <article class="glass stat-card rv">
-          <div class="stat-avatars" aria-hidden="true">
-            <img src="https://picsum.photos/seed/sauti-f1/80/80.jpg" alt="">
-            <img src="https://picsum.photos/seed/sauti-f2/80/80.jpg" alt="">
-            <img src="https://picsum.photos/seed/sauti-f3/80/80.jpg" alt="">
-            <span>+3</span>
-          </div>
-          <div class="stat-num">3 <small>projets / mois</small></div>
-          <p>Offre strictement limitée. Sur sélection uniquement.</p>
+          <div class="stat-num">6 <small>mois</small></div>
+          <p>Un seul format. Du rebranding à l'acquisition, sans raccourci.</p>
         </article>
-        <aside class="glass stat-sat" aria-label="Cinq ans d'ingénierie narrative">
-          <div class="stat-num">5 <small>ans</small></div>
-          <p style="font-size:.8rem;color:var(--creme60)">d'ingénierie narrative</p>
+        <aside class="glass stat-sat" aria-label="Quatre portes, une destination">
+          <div class="stat-num">4 <small>portes</small></div>
+          <p style="font-size:.8rem;color:var(--creme60)">une destination</p>
         </aside>
       </div>
     </div>
@@ -551,200 +511,166 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px;background:var(--noi
     <div class="marquee" aria-hidden="true">
       <div class="mq-track">
         <div class="mq-group">
-          <span>Offre sur candidature</span><i></i><span>3 projets par mois</span><i></i>
-          <span>Legacy Design</span><i></i><span>Narrative Sovereignty</span><i></i>
-          <span>Griot × Netflix</span><i></i><span>The Founder's Season</span><i></i>
-          <span>Make Business Human Again</span><i></i>
+          <span>Rebranding</span><i></i><span>Conseil stratégique</span><i></i>
+          <span>Acquisition</span><i></i><span>Six mois, un seul format</span><i></i>
+          <span>Du vestiaire à la salle de réunion</span><i></i>
+          <span>Un couloir, quatre portes</span><i></i>
+          <span>SAUTI Paris</span><i></i>
         </div>
         <div class="mq-group">
-          <span>Offre sur candidature</span><i></i><span>3 projets par mois</span><i></i>
-          <span>Legacy Design</span><i></i><span>Narrative Sovereignty</span><i></i>
-          <span>Griot × Netflix</span><i></i><span>The Founder's Season</span><i></i>
-          <span>Make Business Human Again</span><i></i>
+          <span>Rebranding</span><i></i><span>Conseil stratégique</span><i></i>
+          <span>Acquisition</span><i></i><span>Six mois, un seul format</span><i></i>
+          <span>Du vestiaire à la salle de réunion</span><i></i>
+          <span>Un couloir, quatre portes</span><i></i>
+          <span>SAUTI Paris</span><i></i>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ 01 LE CONSTAT ============ -->
-  <section class="section constat" id="constat">
+  <!-- ============ LE COULOIR ============ -->
+  <section class="section couloir" id="couloir">
+    <span class="watermark" aria-hidden="true">00</span>
+    <div class="wrap">
+      <div class="section-head rv">
+        <span class="eyebrow">Le Couloir</span>
+        <h2>Quatre portes. <em class="gold">Une seule direction.</em></h2>
+        <p class="lead">Un couloir de simulation. Chaque porte s'ouvre sur une pièce du dispositif. Elles se sont entrouvertes à votre arrivée. Poussez celle que vous voulez, dans l'ordre que vous voulez.</p>
+      </div>
+
+      <div class="doors rv">
+        <button class="door" data-target="#cabinet" aria-label="Porte 01, Le Cabinet. Ce que nous faisons. Entrer.">
+          <span class="door-behind" aria-hidden="true"><span class="door-cta">Entrer
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span></span>
+          <span class="door-panel" aria-hidden="true">
+            <span class="door-plate">01</span>
+            <span class="door-name">Le Cabinet</span>
+            <span class="door-sub">Ce que nous faisons</span>
+            <span class="door-handle"></span>
+          </span>
+        </button>
+
+        <button class="door" data-target="#cible" aria-label="Porte 02, Pour Qui. La cible et le profil idéal. Entrer.">
+          <span class="door-behind" aria-hidden="true"><span class="door-cta">Entrer
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span></span>
+          <span class="door-panel" aria-hidden="true">
+            <span class="door-plate">02</span>
+            <span class="door-name">Pour Qui</span>
+            <span class="door-sub">La cible</span>
+            <span class="door-handle"></span>
+          </span>
+        </button>
+
+        <button class="door" data-target="#pourquoi" aria-label="Porte 03, Pourquoi Nous. Parcours et expérience. Entrer.">
+          <span class="door-behind" aria-hidden="true"><span class="door-cta">Entrer
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span></span>
+          <span class="door-panel" aria-hidden="true">
+            <span class="door-plate">03</span>
+            <span class="door-name">Pourquoi Nous</span>
+            <span class="door-sub">Parcours & expérience</span>
+            <span class="door-handle"></span>
+          </span>
+        </button>
+
+        <button class="door" data-target="#contact" aria-label="Porte 04, Nous Joindre. La dernière porte. Entrer.">
+          <span class="door-behind" aria-hidden="true"><span class="door-cta">Entrer
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span></span>
+          <span class="door-panel" aria-hidden="true">
+            <span class="door-plate">04</span>
+            <span class="door-name">Nous Joindre</span>
+            <span class="door-sub">La dernière porte</span>
+            <span class="door-handle"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PORTE 01 · LE CABINET ============ -->
+  <section class="section cabinet" id="cabinet">
     <span class="watermark" aria-hidden="true">01</span>
     <div class="wrap">
       <div class="section-head rv">
-        <span class="eyebrow">Le Constat</span>
-        <h2>Votre <em>silence</em> a un coût quotidien.</h2>
-        <p class="lead">Pendant que vous excellez dans votre domaine, quelqu'un d'autre raconte son histoire. Il prend votre appel. Il signe votre contrat. Non parce qu'il est meilleur. Mais parce qu'il est visible.</p>
-        <p class="lead">La compétence ne suffit plus. Dans un monde où chaque concurrent publie, chaque décision d'achat commence par une perception. Et cette perception, vous pouvez l'architecturer.</p>
+        <span class="eyebrow">Porte 01 · Le Cabinet</span>
+        <h2>Un cabinet de consulting. <em>Pas une agence de plus.</em></h2>
+        <p class="lead">Nous intervenons sur trois fronts à la fois : l'image, la stratégie et les clients. Le tout tient dans un seul format, pensé pour tenir six mois.</p>
       </div>
-      <div class="constat-grid">
-        <article class="glass constat-card rv">
-          <span class="constat-idx">i.</span>
-          <h3>Le Paradoxe du Dirigeant</h3>
-          <p>Plus votre expertise est pointue, moins vous savez la raconter. Les meilleurs opèrent dans l'ombre. SAUTI les en sort, sans les trahir.</p>
+
+      <div class="cabinet-grid">
+        <article class="glass pilier rv">
+          <span class="pilier-idx">I.</span>
+          <h3>Rebranding</h3>
+          <p>Votre image actuelle est le fruit du hasard, des urgences et des habitudes. Nous la reconstruisons à la main : positionnement, discours, identité. Ce que le marché voit de vous devient une décision.</p>
         </article>
-        <article class="glass constat-card rv" data-delay="120">
-          <span class="constat-idx">ii.</span>
-          <h3>La Taxe de l'Invisibilité</h3>
-          <p>Chaque jour sans narrative puissante est un jour où vos prospects se tournent vers quelqu'un d'autre. L'invisibilité n'est pas une économie. C'est une hémorragie.</p>
+        <article class="glass pilier rv" data-delay="140">
+          <span class="pilier-idx">II.</span>
+          <h3>Conseil</h3>
+          <p>Un cabinet ne livre pas des fichiers, il siège à vos côtés. Chaque décision sensible passe par la même question : est-ce cohérent avec l'autorité que vous êtes en train de construire ?</p>
         </article>
-        <article class="glass constat-card rv" data-delay="240">
-          <span class="constat-idx">iii.</span>
-          <h3>L'Autorité Ne Se Réclame Pas</h3>
-          <p>Elle se construit, pierre après pierre, récit après récit. Ce n'est pas ce que vous dites de vous-même qui compte. C'est ce que les autres ressentent avant même de vous rencontrer.</p>
+        <article class="glass pilier rv" data-delay="280">
+          <span class="pilier-idx">III.</span>
+          <h3>Acquisition</h3>
+          <p>Une belle image qui ne vend rien est un passe-temps. Nous connectons la narration au pipeline : messages, offres, relances. Le branding au service du chiffre d'affaires, pas de l'ego.</p>
         </article>
+      </div>
+
+      <div class="glass format-band rv">
+        <div class="std-nums">
+          <div><b>6</b><span>mois d'accompagnement</span></div>
+          <div><b>3</b><span>leviers activés</span></div>
+          <div><b class="gold">1</b><span>seul format</span></div>
+        </div>
+        <p>Le sport est notre terrain d'origine : vestiaires, clubs, athlètes, institutions. Mais le dispositif parle à tous ceux dont <strong>la personne est la marque</strong>. Six mois, parce qu'une image se construit dans la durée, jamais en une après-midi.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============ 02 LA MÉTHODE ============ -->
-  <section class="section methode" id="methode">
+  <!-- ============ PORTE 02 · POUR QUI ============ -->
+  <section class="section cible" id="cible">
     <span class="watermark" aria-hidden="true">02</span>
     <div class="wrap">
       <div class="section-head rv">
-        <span class="eyebrow">La Méthode</span>
-        <h2 class="methode-title">Griot <span class="x">×</span> Netflix.</h2>
-        <p class="lead">Deux univers. Une philosophie. Un standard que personne sur votre marché ne peut répliquer.</p>
+        <span class="eyebrow">Porte 02 · Pour Qui</span>
+        <h2>Nous ne travaillons pas <em>avec tout le monde</em>.</h2>
+        <p class="lead">Le couloir est étroit par choix. Voici exactement qui le traverse avec nous, et pourquoi les autres ne passeraient pas.</p>
       </div>
 
-      <div class="split">
-        <article class="panel panel-griot rv">
-          <div class="duo" aria-hidden="true"><img src="griot.png" alt=""></div>
-          <div class="panel-inner">
-            <span class="panel-tag"><i></i>L'Héritage</span>
-            <h3 class="panel-big">Le <em>Griot</em>.</h3>
-            <p class="panel-sub">La voix qui traverse les âges.</p>
-            <p>Dans la tradition africaine, le Griot est dépositaire de la mémoire collective. Il ne raconte pas des histoires. Il transmet des vérités que le temps ne peut effacer. Votre parcours porte cette profondeur. Nous la révélons.</p>
-          </div>
+      <div class="cible-grid">
+        <article class="glass cible-card rv">
+          <span class="pin">La cible</span>
+          <h3>Ceux dont la personne est la marque.</h3>
+          <p>Consultants et experts indépendants. Dirigeants de petites structures. Acteurs du milieu sportif, des coachs aux athlètes en construction d'après-carrière. Des métiers où l'on achète d'abord la personne, ensuite la prestation.</p>
         </article>
-        <article class="panel panel-netflix rv" data-delay="160">
-          <div class="duo" aria-hidden="true"><img src="Netflix.png" alt=""></div>
-          <div class="panel-inner">
-            <span class="panel-tag"><i></i>La Puissance</span>
-            <h3 class="panel-big">La <em>Puissance</em>.</h3>
-            <p class="panel-sub">La production qui crée l'addiction.</p>
-            <p>Les plus grandes plateformes ont codifié l'art de captiver. Showrunner, arc narratif, sound design, étalonnage cinéma 4K. Ces standards ne sont pas réservés au divertissement. Votre marque mérite le même traitement.</p>
-            <span class="split-x" aria-hidden="true">×</span>
-          </div>
+        <article class="glass cible-card cible-ideal rv" data-delay="140">
+          <span class="pin gold">Le profil idéal</span>
+          <h3 class="ideal-big">Des gens qui <em>vendent déjà</em>.</h3>
+          <p>Vous avez des clients, votre offre tourne, personne ne vous a rien donné. Ce qui coince n'est pas votre compétence : c'est l'image qui la porte. Nous ne créons pas la demande. Nous la captons, nous la canalisons, nous la multiplions.</p>
         </article>
-      </div>
-
-      <div class="glass method-quote rv">
-        <blockquote>
-          <span class="qm" aria-hidden="true">«</span>
-          Nous ne produisons pas du contenu. Nous construisons l'actif le plus précieux de votre entreprise&nbsp;: <em>votre histoire</em>.
-        </blockquote>
-        <cite>Le principe fondateur de SAUTI</cite>
+        <article class="glass cible-card rv" data-delay="280">
+          <span class="pin">Vous vous reconnaissez si</span>
+          <ul class="checklist">
+            <li>Votre expertise dépasse nettement votre notoriété.</li>
+            <li>Vous vendez déjà, sans toujours en être fier.</li>
+            <li>Vous refusez de ressembler à vos concurrents.</li>
+            <li>Vous préférez être cher et clair plutôt que discret et invisible.</li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ============ 03 L'ACCOMPAGNEMENT ============ -->
-  <section class="section saison" id="offre">
+  <!-- ============ PORTE 03 · POURQUOI NOUS ============ -->
+  <section class="section pourquoi" id="pourquoi">
     <span class="watermark" aria-hidden="true">03</span>
     <div class="wrap">
       <div class="section-head rv">
-        <span class="eyebrow">L'Accompagnement</span>
-        <h2>The Founder's <em>Season</em>.</h2>
-        <p class="lead">90 jours. Une seule session de tournage. Une transformation narrative complète.</p>
-      </div>
-
-      <div class="saison-stats rv">
-        <div class="sstat"><b data-count="90">0</b><span>jours d'accompagnement</span></div>
-        <div class="sstat"><b data-count="1">0</b><span>session de tournage</span></div>
-        <div class="sstat"><b data-count="3">0</b><span>mois de déploiement</span></div>
-      </div>
-
-      <div class="steps">
-        <article class="glass step rv">
-          <span class="step-num" aria-hidden="true">01</span>
-          <h3>L'Extraction</h3>
-          <p class="tagline">L'audit narratif</p>
-          <p>Nous plongeons dans votre parcours pour identifier ce qui vous rend irremplaçable. L'angle que personne n'a encore vu, ni vous, ni vos concurrents.</p>
-        </article>
-        <article class="glass step rv" data-delay="140">
-          <span class="step-num" aria-hidden="true">02</span>
-          <h3>La Production</h3>
-          <p class="tagline">Le tournage cinéma</p>
-          <p>Une après-midi. Qualité 4K. Montage pro, étalonnage, sound design. Vous parlez. Nous construisons votre image pour les dix années à venir.</p>
-        </article>
-        <article class="glass step rv" data-delay="280">
-          <span class="step-num" aria-hidden="true">03</span>
-          <h3>La Distribution</h3>
-          <p class="tagline">La présence omnicanale</p>
-          <p>3 mois de contenu déployé. LinkedIn, Shorts, Brand Manifesto. Vos prospects vous découvrent avant de vous chercher. Ils arrivent déjà convaincus.</p>
-        </article>
-      </div>
-
-      <div class="glass receive rv">
-        <div class="receive-head">
-          <h3>Ce que vous recevez</h3>
-          <span class="tech" style="color:var(--bordeaux-ink)">Livraisons · Season 01</span>
-        </div>
-        <div class="receive-row">
-          <span class="n">N°1</span>
-          <div>
-            <h4>Session Stratégique Deep Dive</h4>
-            <p>Scénarisation de votre récit fondateur, le fil rouge de toute votre communication.</p>
-          </div>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </div>
-        <div class="receive-row">
-          <span class="n">N°2</span>
-          <div>
-            <h4>4 Épisodes Vidéo Signature</h4>
-            <p>Montage cinéma, étalonnage pro, sound design. Des vidéos que l'on partage.</p>
-          </div>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </div>
-        <div class="receive-row">
-          <span class="n">N°3</span>
-          <div>
-            <h4>1 Mois de Contenu LinkedIn &amp; Shorts</h4>
-            <p>Déclinaison texte et vidéo courte, pour dominer votre secteur semaine après semaine.</p>
-          </div>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </div>
-        <div class="receive-row">
-          <span class="n">N°4</span>
-          <div>
-            <h4>Votre Brand Manifesto</h4>
-            <p>La vidéo pilier. Celle qui définit qui vous êtes pour la décennie à venir.</p>
-          </div>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </div>
-      </div>
-
-      <div class="become">
-        <div class="section-head rv">
-          <span class="eyebrow">La Transformation</span>
-          <h2>Ce que vous <em>devenez</em>.</h2>
-        </div>
-        <div class="become-grid">
-          <article class="glass bcard rv">
-            <h3 class="bword">Narratif</h3>
-            <p>Votre message devient tranchant. Fini le flou. Bienvenue à la clarté qui convertit avant même le premier appel.</p>
-          </article>
-          <article class="glass bcard rv" data-delay="140">
-            <h3 class="bword">Autorité</h3>
-            <p>On ne vous compare plus, on vous écoute. Vous passez de prestataire à référence. Le marché vient à vous.</p>
-          </article>
-          <article class="glass bcard rv" data-delay="280">
-            <h3 class="bword">Souveraineté</h3>
-            <p>Votre image ne dépend plus du bouche-à-oreille ni des algorithmes. Elle est architecturée. Elle vous appartient.</p>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 04 LE SHOWRUNNER ============ -->
-  <section class="section showrunner" id="showrunner">
-    <span class="watermark" aria-hidden="true">04</span>
-    <div class="wrap">
-      <div class="section-head rv">
-        <span class="eyebrow">Le Showrunner</span>
-        <h2>Ibrahim <em>Soumahoro</em>.</h2>
-        <p class="lead">Head of Narrative Strategy, SAUTI Paris.</p>
+        <span class="eyebrow">Porte 03 · Pourquoi Nous</span>
+        <h2>Pourquoi nous, <em>et pas quelqu'un d'autre</em>.</h2>
+        <p class="lead">Parce que la réponse n'est pas un argument commercial. C'est une trace, vérifiable, accumulée sur cinq ans.</p>
       </div>
 
       <div class="show-grid">
@@ -754,23 +680,21 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px;background:var(--noi
           </div>
           <div class="photo-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
           <div class="photo-label">
-            <span>Showrunner</span>
+            <span>Fondateur</span>
             <b>Ibrahim Soumahoro</b>
           </div>
         </div>
 
         <article class="glass show-bio rv" data-delay="120">
-          <h3>La main qui écrit.</h3>
+          <h3>Cinq ans. Trois villes. Une obsession.</h3>
           <span class="role">Head of Narrative Strategy · SAUTI Paris</span>
           <p>J'ai passé ces cinq dernières années à structurer l'image de marque dans les écosystèmes les plus exigeants du continent. De la direction stratégique d'initiatives nationales à Abidjan, jusqu'à la production de documentaires à Dakar.</p>
-          <p>Le véritable point de bascule&nbsp;? Ma collaboration autour de la <strong>Basketball Africa League</strong> (BAL, NBA) au Sénégal.</p>
-          <p>En réalisant la docu-série <strong>The Field</strong>, j'ai décodé la mécanique implacable de l'entertainment américain. Celle qui transforme de simples athlètes en icônes culturelles et en légendes économiques.</p>
-          <p>Ce standard «&nbsp;Cinéma&nbsp;», je l'ai ramené à Paris pour fonder SAUTI. Mon objectif est unique&nbsp;: prendre les meilleurs CEOs africains et les transformer en voix incontestables de leur industrie.</p>
-          <p><strong>Votre expertise est votre moteur. Votre histoire est votre arme de domination.</strong></p>
+          <p>Le point de bascule&nbsp;? Ma collaboration autour de la <strong>Basketball Africa League</strong> (BAL, NBA) au Sénégal. En réalisant la docu-série <strong>The Field</strong>, j'ai décodé la mécanique de l'entertainment américain. Celle qui transforme des athlètes en icônes.</p>
+          <p>Ce standard, je l'ai ramené à Paris pour fonder SAUTI. Notre terrain d'origine est le sport. Notre terrain de jeu aujourd'hui : tous ceux dont la personne est la marque. Votre expertise est votre moteur. Votre image est ce qui la rend visible.</p>
         </article>
 
         <aside class="glass show-quote rv" data-delay="220">
-          <p>«&nbsp;J'ai vu comment on fabrique des légendes sur les parquets. J'applique aujourd'hui cette même ingénierie narrative aux leaders économiques.&nbsp;»</p>
+          <p>«&nbsp;J'ai vu comment on fabrique des légendes sur les parquets. J'applique cette même ingénierie aux carrières qui méritent plus que du talent.&nbsp;»</p>
         </aside>
       </div>
 
@@ -788,63 +712,47 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px;background:var(--noi
         <div class="glass tl-item rv" data-delay="240">
           <span class="tl-city">Paris · France</span>
           <h4>SAUTI</h4>
-          <p>Fondation de Sauti. Transfert de l'ingénierie NBA au monde des dirigeants, pour en faire des légendes économiques.</p>
+          <p>Fondation du cabinet. La même ingénierie, appliquée aux consultants, dirigeants et athlètes qui vendent déjà.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ ANCRAGE / STANDARD ============ -->
-  <section class="section ancrage">
+  <!-- ============ PORTE 04 · NOUS JOINDRE ============ -->
+  <section class="section contact" id="contact">
+    <span class="watermark" aria-hidden="true">04</span>
     <div class="wrap">
       <div class="section-head rv">
-        <span class="eyebrow">L'Ancrage</span>
-        <h2>Une adresse. Un <em>standard</em>.</h2>
+        <span class="eyebrow">Porte 04 · Nous Joindre</span>
+        <h2>La dernière porte ne s'ouvre que de <em>l'intérieur</em>.</h2>
+        <p class="lead">Deux façons de pousser. Aucune des deux ne ressemble à un rendez-vous d'affaires.</p>
       </div>
-      <div class="ancrage-grid">
-        <article class="glass ancrage-card rv">
-          <span class="pin">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s7-5.1 7-11a7 7 0 1 0-14 0c0 5.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
-            Ancrage institutionnel
-          </span>
-          <p class="addr">SAUTI Narrative Agency<br>78 Avenue des Champs-Élysées<br>75008 Paris, France</p>
-          <a class="mail-link" href="mailto:contact@agencysauti.com">contact@agencysauti.com
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+
+      <div class="glass method-quote rv">
+        <blockquote>
+          <span class="qm" aria-hidden="true">«</span>
+          Combien vous coûte un client perdu dans le <em>silence</em>&nbsp;?
+        </blockquote>
+      </div>
+
+      <div class="contact-grid">
+        <article class="glass contact-main rv">
+          <span class="final-badge"><i></i>Sur sélection · Nous choisissons aussi qui nous accompagnons</span>
+          <h3>Pousser la porte.</h3>
+          <p>Un échange de trente minutes. Rien à préparer, aucune présentation à faire. Nous posons des questions, vous regardez le couloir, vous décidez si vous voulez le traverser.</p>
+          <a class="btn btn-gold" href="https://calendly.com/agencysauti/candidature" target="_blank" rel="noopener">
+            Pousser la porte
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
+          <p class="contact-alt">Par écrit, si vous préférez : <a href="mailto:contact@agencysauti.com">contact@agencysauti.com</a></p>
+          <p class="contact-addr">SAUTI Consulting · 78 Avenue des Champs-Élysées · 75008 Paris, France</p>
         </article>
-        <article class="glass ancrage-card rv" data-delay="140">
-          <span class="pin">Notre standard</span>
-          <p class="addr">Chaque collaboration est traitée comme une œuvre d'art, parce que votre réputation mérite ce niveau d'exigence.</p>
-          <div class="std-nums">
-            <div><b>3</b><span>projets par mois</span></div>
-            <div><b>4K</b><span>qualité cinéma</span></div>
-            <div><b class="gold">0</b><span>exception</span></div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
 
-  <!-- ============ CTA FINAL ============ -->
-  <section class="section final" id="candidature">
-    <span class="watermark" aria-hidden="true">SAUTI</span>
-    <div class="wrap">
-      <span class="final-badge rv"><i></i>Candidature · Sur sélection uniquement</span>
-      <h2 class="rv" data-delay="100">Construisons votre <em>légende</em>.</h2>
-      <p class="sub rv" data-delay="180">Un entretien stratégique de 30 minutes. Pour valider notre alignement avant de construire votre héritage.</p>
-
-      <div class="glass final-quote rv" data-delay="260">
-        Combien vous coûte un client perdu dans le <em>silence</em>&nbsp;?
-      </div>
-
-      <div class="final-ctas rv" data-delay="340">
-        <a class="btn btn-gold" href="https://calendly.com/agencysauti/candidature" target="_blank" rel="noopener">
-          Soumettre une candidature
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <p class="final-note">Entretien stratégique de 30 min · Gratuit</p>
-        <br>
-        <a class="final-mail" href="mailto:contact@agencysauti.com">contact@agencysauti.com</a>
+        <aside class="glass contact-qr rv" data-delay="140">
+          <span class="pin">Ou scannez</span>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&color=F5F1EA&bgcolor=111111&data=https%3A%2F%2Fcalendly.com%2Fagencysauti%2Fcandidature" alt="QR code menant au calendrier de rendez-vous SAUTI" loading="lazy" onerror="this.style.display='none'">
+          <p>Le même appel, au scan. Gardez ce code sous la main.</p>
+        </aside>
       </div>
     </div>
   </section>
@@ -859,18 +767,19 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px;background:var(--noi
         <span class="brand-word hidden">SAUTI<b>.</b></span>
       </a>
       <nav class="nav-links" style="display:flex" aria-label="Navigation pied de page">
-        <a href="#constat">Le Constat</a>
-        <a href="#methode">La Méthode</a>
-        <a href="#offre">L'Offre</a>
-        <a href="#showrunner">Le Showrunner</a>
+        <a href="#couloir">Le Couloir</a>
+        <a href="#cabinet">Le Cabinet</a>
+        <a href="#cible">Pour Qui</a>
+        <a href="#pourquoi">Pourquoi Nous</a>
+        <a href="#contact">Nous Joindre</a>
       </nav>
     </div>
     <div class="foot-mid">
       <span>78 Avenue des Champs-Élysées, 75008 Paris</span>
       <a href="mailto:contact@agencysauti.com">contact@agencysauti.com</a>
-      <a href="https://calendly.com/agencysauti/candidature" target="_blank" rel="noopener">Candidature</a>
+      <a href="https://calendly.com/agencysauti/candidature" target="_blank" rel="noopener">Pousser la porte</a>
     </div>
-    <p class="foot-bottom">© 2025 Sauti Narrative Agency · Griot × Netflix · Paris</p>
+    <p class="foot-bottom">© 2025 SAUTI · Cabinet de conseil en rebranding & acquisition · Paris</p>
   </div>
 </footer>
 
@@ -910,22 +819,30 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px;background:var(--noi
   }, {threshold:.14, rootMargin:"0px 0px -40px 0px"});
   document.querySelectorAll(".rv").forEach(el => io.observe(el));
 
-  /* Compteurs animés */
-  const cio = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(!e.isIntersecting) return;
-      const el = e.target, target = parseInt(el.dataset.count, 10);
-      cio.unobserve(el);
-      if(reduce){ el.textContent = target; return; }
-      const t0 = performance.now(), dur = 1200;
-      (function tick(t){
-        const p = Math.min((t - t0) / dur, 1);
-        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
-        if(p < 1) requestAnimationFrame(tick);
-      })(t0);
+  /* Le couloir : les portes s'entrouvrent à l'arrivée du visiteur */
+  const doors = Array.from(document.querySelectorAll(".door"));
+  const corridor = document.getElementById("couloir");
+  if(corridor && doors.length){
+    const dio = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          doors.forEach((d,i) => setTimeout(() => d.classList.add("ajar"), 160 * i));
+          dio.disconnect();
+        }
+      });
+    }, {threshold:.25});
+    dio.observe(corridor);
+  }
+  /* Clic sur une porte : elle s'ouvre, puis on entre dans la pièce */
+  doors.forEach(d => {
+    d.addEventListener("click", () => {
+      d.classList.add("open");
+      const target = document.querySelector(d.dataset.target);
+      setTimeout(() => {
+        if(target) target.scrollIntoView({behavior: reduce ? "auto" : "smooth"});
+      }, 380);
     });
-  }, {threshold:.6});
-  document.querySelectorAll("[data-count]").forEach(el => cio.observe(el));
+  });
 
   /* Parallax du hero */
   const hero = document.getElementById("hero");
