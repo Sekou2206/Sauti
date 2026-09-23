@@ -64,8 +64,8 @@ body::after{
 }
 .eyebrow::before{content:"";width:34px;height:1px;background:var(--bordeaux-ink);opacity:.7}
 h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.04;letter-spacing:-.015em}
-h1 em,h2 em,.quote em{font-style:italic;color:var(--bordeaux-ink);font-weight:400}
-h2 em.gold,h1 em.gold{color:var(--or)}
+h1 em,h2 em{font-style:italic;color:var(--bordeaux-ink);font-weight:400}
+h1 em.gold,h2 em.gold{color:var(--or)}
 .section-head{position:relative;z-index:1}
 .section-head h2{font-size:clamp(2.3rem,5.2vw,4.3rem);margin:22px 0 0}
 .section-head p.lead{max-width:620px;color:var(--creme60);font-size:1.06rem;margin-top:22px}
@@ -218,59 +218,124 @@ h2 em.gold,h1 em.gold{color:var(--or)}
 .section{position:relative;padding:clamp(80px,9vw,128px) 0}
 .section + .section{border-top:1px solid var(--line)}
 
-/* ============ LE COULOIR : quatre portes qui s'ouvrent ============ */
+/* ==================================================
+   LE COULOIR : système de portes à panneaux coulissants
+   Une porte ouverte = panneau étendu. Les autres = portes fermées.
+   ================================================== */
 .couloir .watermark{top:36px;right:2vw}
-.doors{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:64px;
-  perspective:1500px;perspective-origin:50% 30%;position:relative;z-index:1;
+.tabs{
+  display:flex;gap:14px;height:500px;margin-top:64px;
+  position:relative;z-index:1;
 }
 .door{
-  position:relative;height:440px;border:0;background:none;padding:0;text-align:left;
-  cursor:pointer;transform-style:preserve-3d;color:inherit;display:block;
+  position:relative;flex:1 1 0;min-width:0;
+  border-radius:18px;overflow:hidden;
+  border:1px solid var(--stroke);
+  background:linear-gradient(168deg,#171310 0%,#0C0A08 72%);
+  cursor:pointer;
+  transition:flex-grow 1s var(--ease),background .8s var(--ease),border-color .5s var(--ease),transform .5s var(--ease),box-shadow .6s var(--ease);
+  will-change:flex-grow;
 }
-/* Ce qui se trouve derrière la porte : lumière dorée + invitation */
-.door-behind{
-  position:absolute;inset:0;border-radius:12px 12px 0 0;
-  background:radial-gradient(130% 105% at 85% 45%, rgba(201,161,90,.34), rgba(92,26,26,.22) 55%, rgba(10,10,10,.92));
-  display:flex;align-items:flex-end;padding:26px;
-  opacity:0;transition:opacity .8s var(--ease);
+.door:not(.open):hover{
+  border-color:rgba(201,161,90,.35);
+  transform:translateY(-5px);
+  box-shadow:0 24px 50px rgba(0,0,0,.5);
 }
-.door-behind::after{
-  content:"";position:absolute;left:14px;right:14px;bottom:0;height:4px;
-  background:linear-gradient(90deg,transparent,rgba(201,161,90,.7),transparent);
-  filter:blur(1px);
+.door.open{
+  flex-grow:5.2;cursor:default;
+  border-color:rgba(201,161,90,.32);
+  background:
+    radial-gradient(130% 115% at 20% 0%, rgba(92,26,26,.62) 0%, rgba(19,12,10,.97) 58%, #0B0908 100%);
+  box-shadow:0 34px 70px rgba(0,0,0,.6);
 }
-.door-cta{display:inline-flex;align-items:center;gap:10px;font-family:var(--tech);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--or)}
-/* Le battant */
-.door-panel{
-  position:absolute;inset:0;border-radius:12px 12px 0 0;
-  transform-origin:left center;transition:transform .9s var(--ease),box-shadow .9s var(--ease);
-  background:linear-gradient(160deg,#181512,#0E0C0A 70%);
-  border:1px solid rgba(245,241,234,.13);
-  box-shadow:0 30px 60px rgba(0,0,0,.55);
-  display:flex;flex-direction:column;padding:26px;overflow:hidden;
+/* Liseré doré au sommet de la porte ouverte */
+.door.open::after{
+  content:"";position:absolute;top:0;left:0;right:0;height:2px;z-index:5;
+  background:linear-gradient(90deg,var(--or) 0%,rgba(201,161,90,.1) 75%,transparent);
 }
-/* Moulures de porte */
-.door-panel::before{content:"";position:absolute;inset:52px 26px 96px;border:1px solid rgba(245,241,234,.08);border-radius:8px}
-.door-panel::after{content:"";position:absolute;left:26px;right:26px;top:54%;height:1px;background:rgba(245,241,234,.08)}
-.door.ajar .door-panel{transform:rotateY(-14deg)}
-.door.ajar .door-behind{opacity:.55}
-.door.open .door-panel,.door:hover .door-panel,.door:focus-visible .door-panel{
-  transform:rotateY(-62deg);box-shadow:44px 34px 90px rgba(0,0,0,.72);
+
+/* --- Navigation numérotée, style de la référence --- */
+.door-nav{
+  position:absolute;top:0;left:0;z-index:6;
+  display:inline-flex;align-items:center;gap:9px;
+  background:none;border:0;padding:22px 20px;
+  font-family:var(--tech);font-size:.8rem;letter-spacing:.1em;
+  color:var(--creme40);cursor:pointer;
+  transition:color .3s;
 }
-.door.open .door-behind,.door:hover .door-behind,.door:focus-visible .door-behind{opacity:1}
-.door-plate{
-  align-self:flex-start;font-family:var(--tech);font-size:.62rem;letter-spacing:.3em;
-  color:rgba(245,241,234,.55);border:1px solid rgba(245,241,234,.18);
-  padding:6px 10px;border-radius:4px;
+.door-nav .dash{width:14px;height:1px;background:currentColor;transition:width .45s var(--ease),background .35s}
+.door-nav:hover{color:var(--creme)}
+.door-nav:focus-visible{outline:2px solid var(--or);outline-offset:-4px;border-radius:8px}
+.door.open .door-nav{color:var(--creme)}
+.door.open .door-nav .dash{width:26px;background:var(--or)}
+
+/* --- État fermé : illustration, poignée, label --- */
+.door-closed{
+  position:absolute;inset:0;z-index:2;
+  display:flex;flex-direction:column;
+  opacity:1;
+  transition:opacity .35s var(--ease);
 }
-.door-name{font-family:var(--serif);font-size:clamp(1.4rem,1.8vw,1.8rem);font-weight:500;margin-top:auto;line-height:1.1}
-.door-sub{font-family:var(--tech);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--bordeaux-ink);margin-top:8px}
+.door.open .door-closed{opacity:0;pointer-events:none}
+.door-illus{flex:1;display:flex;align-items:center;justify-content:center;padding-top:36px}
+.door-illus svg{
+  width:60%;max-width:150px;height:auto;
+  opacity:.7;transition:opacity .4s var(--ease),transform .6s var(--ease);
+}
+.door:not(.open):hover .door-illus svg{opacity:1;transform:translateY(-4px)}
+.door-foot{padding:0 20px 22px;min-width:0}
+.door-label{
+  display:block;font-family:var(--serif);font-size:1.02rem;font-weight:500;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.door-hint{
+  display:block;margin-top:5px;
+  font-family:var(--tech);font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--bordeaux-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
 .door-handle{
-  position:absolute;right:20px;top:50%;width:9px;height:9px;border-radius:50%;
-  background:var(--or);box-shadow:0 0 12px rgba(201,161,90,.55);
+  position:absolute;right:15px;top:50%;margin-top:-4px;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--or);box-shadow:0 0 10px rgba(201,161,90,.45);
+  opacity:.65;transition:opacity .3s,box-shadow .3s;
 }
-.door-handle::before{content:"";position:absolute;right:13px;top:3px;width:16px;height:1.5px;background:rgba(245,241,234,.25)}
+.door:not(.open):hover .door-handle{opacity:1;box-shadow:0 0 18px rgba(201,161,90,.9)}
+.door.open .door-handle{opacity:0}
+
+/* --- État ouvert : contenu de la pièce --- */
+.door-open{
+  position:absolute;inset:0;z-index:3;
+  padding:80px 44px 40px;
+  display:flex;flex-direction:column;
+  opacity:0;transform:translateY(18px);pointer-events:none;
+  transition:opacity .4s var(--ease),transform .5s var(--ease);
+}
+.door.open .door-open{
+  opacity:1;transform:none;pointer-events:auto;
+  transition:opacity .65s var(--ease) .42s,transform .75s var(--ease) .42s;
+}
+.door-big{
+  position:absolute;right:14px;bottom:-18px;z-index:0;
+  font-family:var(--serif);font-weight:600;font-size:9.5rem;line-height:1;
+  color:transparent;-webkit-text-stroke:1px rgba(201,161,90,.22);
+  pointer-events:none;user-select:none;
+}
+.door-kicker{
+  font-family:var(--tech);font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--bordeaux-ink);margin:16px 0 14px;
+}
+.door-open h3{font-size:clamp(1.5rem,2.3vw,2.15rem);max-width:17ch;position:relative;z-index:1}
+.door-open h3 em{font-style:italic;color:var(--or);font-weight:400}
+.door-open p{color:var(--creme60);max-width:44ch;font-size:.95rem;margin-top:6px;position:relative;z-index:1}
+.door-enter{
+  margin-top:auto;align-self:flex-start;position:relative;z-index:1;
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--tech);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--or);border-bottom:1px solid rgba(201,161,90,.4);padding-bottom:6px;
+  transition:gap .3s var(--ease),border-color .3s;
+}
+.door-enter:hover{gap:20px;border-color:var(--or)}
+.door-enter svg{flex-shrink:0}
 
 /* ============ 01 LE CABINET ============ */
 .cabinet .watermark{top:36px;right:2vw}
@@ -352,8 +417,7 @@ h2 em.gold,h1 em.gold{color:var(--or)}
 
 /* ============ 04 NOUS JOINDRE ============ */
 .contact .watermark{top:36px;left:2vw}
-.contact .method-quote{margin:60px auto 0}
-.method-quote{max-width:920px;text-align:center;position:relative;z-index:1;padding:52px 46px}
+.method-quote{max-width:920px;margin:60px auto 0;text-align:center;position:relative;z-index:1;padding:52px 46px}
 .method-quote blockquote{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.45rem,3.2vw,2.5rem);line-height:1.35}
 .method-quote em{font-style:italic;color:var(--or);font-weight:400}
 .method-quote .qm{font-family:var(--serif);color:var(--or);font-size:4.2rem;line-height:0;display:block;margin-bottom:32px}
@@ -391,14 +455,13 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px;background:var(--noi
   .stat-stack{position:static;width:auto;margin-top:50px;display:flex;gap:20px;align-items:stretch}
   .stat-card{max-width:340px}
   .stat-sat{display:none}
+  .tabs{height:460px}
 }
 @media (max-width:1100px){
   .show-bio{grid-column:1/-1;grid-row:1}
   .show-photo{grid-column:1/-1;grid-row:2;min-height:440px;max-width:560px}
   .show-quote{grid-column:1/-1;grid-row:3}
   .photo-label{display:none}
-  .doors{grid-template-columns:repeat(2,1fr)}
-  .door{height:340px}
 }
 @media (max-width:960px){
   .nav-links,.nav-cta{display:none}
@@ -416,20 +479,37 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px;background:var(--noi
   .method-quote{padding:40px 28px}
   .contact-main{padding:34px 28px}
 }
+/* Couloir en colonne sur mobile : portes horizontales */
+@media (max-width:860px){
+  .tabs{flex-direction:column;height:auto;gap:12px}
+  .door{flex:none;min-height:64px}
+  .door.open{min-height:0}
+  .door-closed,.door-open{position:static}
+  .door-nav{padding:20px 18px}
+  .door-closed{height:64px;flex-direction:row;align-items:center;padding:0 20px 0 78px;gap:14px}
+  .door-illus{display:none}
+  .door-foot{padding:0;display:flex;align-items:baseline;gap:14px;flex:1;min-width:0}
+  .door-hint{margin:0;overflow:hidden;text-overflow:ellipsis}
+  .door-handle{display:none}
+  .door.open .door-closed{display:none}
+  .door-open{display:none;padding:26px 22px 30px 78px}
+  .door.open .door-open{display:flex;animation:fadeUp .55s var(--ease)}
+  .door-big{font-size:6rem;bottom:-8px;right:8px}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+}
 @media (max-width:560px){
   .wrap{width:calc(100% - 36px)}
-  .doors{grid-template-columns:1fr;gap:20px;perspective:1000px}
-  .door{height:280px}
   .show-bio{padding:32px 26px}
   .hero-sub{padding:20px 22px}
   .stat-stack{flex-direction:column}
   .stat-card{max-width:100%}
+  .door-closed{padding-left:70px}
+  .door-open{padding-left:70px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
   html{scroll-behavior:auto}
   .rv{opacity:1;transform:none}
-  .door-panel{transform:rotateY(-14deg)!important}
 }
 </style>
 </head>
@@ -535,57 +615,135 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px;background:var(--noi
       <div class="section-head rv">
         <span class="eyebrow">Le Couloir</span>
         <h2>Quatre portes. <em class="gold">Une seule direction.</em></h2>
-        <p class="lead">Un couloir de simulation. Chaque porte s'ouvre sur une pièce du dispositif. Elles se sont entrouvertes à votre arrivée. Poussez celle que vous voulez, dans l'ordre que vous voulez.</p>
+        <p class="lead">Une porte s'ouvre, les autres attendent. Ouvrez celle que vous voulez, dans l'ordre que vous voulez. Chacune mène à une pièce du dispositif.</p>
       </div>
 
-      <div class="doors rv">
-        <button class="door" data-target="#cabinet" aria-label="Porte 01, Le Cabinet. Ce que nous faisons. Entrer.">
-          <span class="door-behind" aria-hidden="true"><span class="door-cta">Entrer
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span></span>
-          <span class="door-panel" aria-hidden="true">
-            <span class="door-plate">01</span>
-            <span class="door-name">Le Cabinet</span>
-            <span class="door-sub">Ce que nous faisons</span>
-            <span class="door-handle"></span>
-          </span>
-        </button>
+      <div class="tabs rv" id="doorsRoot" aria-label="Les quatre portes du couloir SAUTI">
 
-        <button class="door" data-target="#cible" aria-label="Porte 02, Pour Qui. La cible et le profil idéal. Entrer.">
-          <span class="door-behind" aria-hidden="true"><span class="door-cta">Entrer
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span></span>
-          <span class="door-panel" aria-hidden="true">
-            <span class="door-plate">02</span>
-            <span class="door-name">Pour Qui</span>
-            <span class="door-sub">La cible</span>
+        <!-- Porte 01 -->
+        <article class="door open">
+          <button class="door-nav" aria-expanded="true" aria-controls="dp0" aria-label="Porte 01, Le Cabinet">
+            <span class="dash"></span>01
+          </button>
+          <div class="door-closed" aria-hidden="true">
+            <div class="door-illus">
+              <svg viewBox="0 0 120 150" fill="none" stroke="#C9A15A" stroke-width="1" stroke-linecap="round">
+                <path d="M12 40 60 14l48 26"/>
+                <path d="M22 44v68M60 44v68M98 44v68"/>
+                <path d="M14 116h92"/>
+                <path d="M8 126h104" opacity=".5"/>
+              </svg>
+            </div>
+            <div class="door-foot">
+              <span class="door-label">Le Cabinet</span>
+              <span class="door-hint">Ce que nous faisons</span>
+            </div>
             <span class="door-handle"></span>
-          </span>
-        </button>
+          </div>
+          <div class="door-open" id="dp0">
+            <span class="door-big" aria-hidden="true">01</span>
+            <span class="door-kicker">Ce que nous faisons</span>
+            <h3>Un cabinet de consulting. <em>Pas une agence de plus.</em></h3>
+            <p>Rebranding, conseil, acquisition. Trois leviers activés en même temps, dans un seul format qui tient six mois.</p>
+            <a class="door-enter" href="#cabinet">Entrer dans la pièce
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </article>
 
-        <button class="door" data-target="#pourquoi" aria-label="Porte 03, Pourquoi Nous. Parcours et expérience. Entrer.">
-          <span class="door-behind" aria-hidden="true"><span class="door-cta">Entrer
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span></span>
-          <span class="door-panel" aria-hidden="true">
-            <span class="door-plate">03</span>
-            <span class="door-name">Pourquoi Nous</span>
-            <span class="door-sub">Parcours & expérience</span>
+        <!-- Porte 02 -->
+        <article class="door">
+          <button class="door-nav" aria-expanded="false" aria-controls="dp1" aria-label="Porte 02, Pour Qui">
+            <span class="dash"></span>02
+          </button>
+          <div class="door-closed" aria-hidden="true">
+            <div class="door-illus">
+              <svg viewBox="0 0 120 150" fill="none" stroke="#C9A15A" stroke-width="1" stroke-linecap="round">
+                <circle cx="60" cy="75" r="36"/>
+                <circle cx="60" cy="75" r="21" opacity=".6"/>
+                <circle cx="60" cy="75" r="6" fill="#C9A15A" stroke="none"/>
+                <path d="M60 24v13M60 113v13M9 75h13M98 75h13" opacity=".6"/>
+              </svg>
+            </div>
+            <div class="door-foot">
+              <span class="door-label">Pour Qui</span>
+              <span class="door-hint">La cible</span>
+            </div>
             <span class="door-handle"></span>
-          </span>
-        </button>
+          </div>
+          <div class="door-open" id="dp1">
+            <span class="door-big" aria-hidden="true">02</span>
+            <span class="door-kicker">La cible</span>
+            <h3>Ceux dont la personne <em>est la marque</em>.</h3>
+            <p>Consultants, dirigeants, acteurs du sport. Des gens qui vendent déjà, et dont l'image ne suit plus le niveau de l'offre.</p>
+            <a class="door-enter" href="#cible">Entrer dans la pièce
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </article>
 
-        <button class="door" data-target="#contact" aria-label="Porte 04, Nous Joindre. La dernière porte. Entrer.">
-          <span class="door-behind" aria-hidden="true"><span class="door-cta">Entrer
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span></span>
-          <span class="door-panel" aria-hidden="true">
-            <span class="door-plate">04</span>
-            <span class="door-name">Nous Joindre</span>
-            <span class="door-sub">La dernière porte</span>
+        <!-- Porte 03 -->
+        <article class="door">
+          <button class="door-nav" aria-expanded="false" aria-controls="dp2" aria-label="Porte 03, Pourquoi Nous">
+            <span class="dash"></span>03
+          </button>
+          <div class="door-closed" aria-hidden="true">
+            <div class="door-illus">
+              <svg viewBox="0 0 120 150" fill="none" stroke="#C9A15A" stroke-width="1" stroke-linecap="round">
+                <path d="M18 126 C 44 108, 34 84, 62 74 S 84 42, 98 26"/>
+                <circle cx="18" cy="126" r="4"/>
+                <circle cx="62" cy="74" r="4" opacity=".6"/>
+                <circle cx="98" cy="26" r="5" fill="#C9A15A" stroke="none"/>
+              </svg>
+            </div>
+            <div class="door-foot">
+              <span class="door-label">Pourquoi Nous</span>
+              <span class="door-hint">Parcours & expérience</span>
+            </div>
             <span class="door-handle"></span>
-          </span>
-        </button>
+          </div>
+          <div class="door-open" id="dp2">
+            <span class="door-big" aria-hidden="true">03</span>
+            <span class="door-kicker">Parcours & expérience</span>
+            <h3>Cinq ans. Trois villes. <em>Une obsession.</em></h3>
+            <p>Abidjan, Dakar, Paris. Une ingénierie née sur les parquets de la BAL, appliquée aux carrières qui méritent plus que du talent.</p>
+            <a class="door-enter" href="#pourquoi">Entrer dans la pièce
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Porte 04 -->
+        <article class="door">
+          <button class="door-nav" aria-expanded="false" aria-controls="dp3" aria-label="Porte 04, Nous Joindre">
+            <span class="dash"></span>04
+          </button>
+          <div class="door-closed" aria-hidden="true">
+            <div class="door-illus">
+              <svg viewBox="0 0 120 150" fill="none" stroke="#C9A15A" stroke-width="1" stroke-linecap="round">
+                <rect x="24" y="16" width="52" height="118" rx="2"/>
+                <path d="M76 16 102 24v102l-26 8" opacity=".7"/>
+                <circle cx="90" cy="76" r="2.6" fill="#C9A15A" stroke="none"/>
+                <path d="M104 40l12-6M106 76h12M104 112l12 6" opacity=".45"/>
+              </svg>
+            </div>
+            <div class="door-foot">
+              <span class="door-label">Nous Joindre</span>
+              <span class="door-hint">La dernière porte</span>
+            </div>
+            <span class="door-handle"></span>
+          </div>
+          <div class="door-open" id="dp3">
+            <span class="door-big" aria-hidden="true">04</span>
+            <span class="door-kicker">La dernière porte</span>
+            <h3>Elle ne s'ouvre que <em>de l'intérieur</em>.</h3>
+            <p>Un échange de trente minutes, un QR code, un email. Aucune des trois options ne ressemble à un rendez-vous d'affaires.</p>
+            <a class="door-enter" href="#contact">Entrer dans la pièce
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
@@ -645,7 +803,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px;background:var(--noi
           <h3>Ceux dont la personne est la marque.</h3>
           <p>Consultants et experts indépendants. Dirigeants de petites structures. Acteurs du milieu sportif, des coachs aux athlètes en construction d'après-carrière. Des métiers où l'on achète d'abord la personne, ensuite la prestation.</p>
         </article>
-        <article class="glass cible-card cible-ideal rv" data-delay="140">
+        <article class="glass cible-card rv" data-delay="140">
           <span class="pin gold">Le profil idéal</span>
           <h3 class="ideal-big">Des gens qui <em>vendent déjà</em>.</h3>
           <p>Vous avez des clients, votre offre tourne, personne ne vous a rien donné. Ce qui coince n'est pas votre compétence : c'est l'image qui la porte. Nous ne créons pas la demande. Nous la captons, nous la canalisons, nous la multiplions.</p>
@@ -819,30 +977,39 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px;background:var(--noi
   }, {threshold:.14, rootMargin:"0px 0px -40px 0px"});
   document.querySelectorAll(".rv").forEach(el => io.observe(el));
 
-  /* Le couloir : les portes s'entrouvrent à l'arrivée du visiteur */
-  const doors = Array.from(document.querySelectorAll(".door"));
-  const corridor = document.getElementById("couloir");
-  if(corridor && doors.length){
-    const dio = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if(e.isIntersecting){
-          doors.forEach((d,i) => setTimeout(() => d.classList.add("ajar"), 160 * i));
-          dio.disconnect();
-        }
+  /* ============ Le couloir : portes à panneaux coulissants ============ */
+  const tabsRoot = document.getElementById("doorsRoot");
+  if(tabsRoot){
+    const doorEls = Array.from(tabsRoot.querySelectorAll(".door"));
+
+    function setDoor(target){
+      doorEls.forEach(d => {
+        const isOpen = d === target;
+        d.classList.toggle("open", isOpen);
+        const btn = d.querySelector(".door-nav");
+        if(btn) btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
       });
-    }, {threshold:.25});
-    dio.observe(corridor);
-  }
-  /* Clic sur une porte : elle s'ouvre, puis on entre dans la pièce */
-  doors.forEach(d => {
-    d.addEventListener("click", () => {
-      d.classList.add("open");
-      const target = document.querySelector(d.dataset.target);
-      setTimeout(() => {
-        if(target) target.scrollIntoView({behavior: reduce ? "auto" : "smooth"});
-      }, 380);
+    }
+
+    /* Clic n'importe où sur une porte fermée : elle s'ouvre */
+    doorEls.forEach(d => {
+      d.addEventListener("click", e => {
+        /* Une porte déjà ouverte laisse passer ses liens (Entrer dans la pièce) */
+        if(d.classList.contains("open")) return;
+        setDoor(d);
+      });
     });
-  });
+
+    /* Navigation clavier : flèches gauche/droite entre les portes */
+    tabsRoot.addEventListener("keydown", e => {
+      if(e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      const idx = doorEls.findIndex(d => d.classList.contains("open"));
+      const next = (idx + (e.key === "ArrowRight" ? 1 : -1) + doorEls.length) % doorEls.length;
+      setDoor(doorEls[next]);
+      doorEls[next].querySelector(".door-nav").focus();
+      e.preventDefault();
+    });
+  }
 
   /* Parallax du hero */
   const hero = document.getElementById("hero");
